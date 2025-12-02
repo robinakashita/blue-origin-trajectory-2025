@@ -138,11 +138,14 @@ These values are broadly consistent with public descriptions of New Shepard flig
 The notebook generates several diagnostic plots, which can be exported (e.g., to a `figures/` directory) using `matplotlib.pyplot.savefig`:
 
 - **Position vs Time**
+  
 ![Position vs Time](figures/position_vs_time.png)
 
 - **Velocity vs Time**
+
 ![Velociy vs Time](figures/velocity_vs_time.png)
 
 
 - **Acceleration vs Time**
+
 ![Acceleration vs Time](figures/acceleration_vs_time.png)

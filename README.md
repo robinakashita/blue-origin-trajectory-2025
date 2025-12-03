@@ -12,12 +12,6 @@ The model is implemented in a single, self-contained Jupyter Notebook:
 
 As space travel becomes more accessible to the general public, it becomes crucial to study the effects of Newton's Second Laws of Motion and enhance the safety of spacecraft trajectories and space missions. By modeling the trajectory of Blue Origin's New Shepard Capsule from the beginning to the end, we are able to visualize where the maximum terminal velocity of the capsule occurs. By splitting up our 2nd-Order ODE into two First-Order ODEs, we are able to numerically calculate the maximum terminal velocity for the Blue Origin capsule and the free-fall time for the space crew. The capsule will travel from $t = 0 s$ to $t = 660s$. At $t = 141s$, the engine of the capsule will cut-off, and the booster will separate from the capsule. The position and velocity will start at $x$, $y$, $v_x$, $v_y$ = $0$, respectively. The mass of the capsule will start at $m = 75,000 kg$.
 
-Sources:
-- [Blue Origin For the Benefit of Earth](https://www.blueorigin.com/new-shepard)
-- [SciPy](https://scipy.org/) and Matplotlib documentation  – I am planning to use Python with these libraries for numerical integration and plotting.
-- [Runge-Kutta method](https://math.libretexts.org/Courses/Monroe_Community_College/MTH_225_Differential_Equations/03%3A_Numerical_Methods/3.03%3A_The_Runge-Kutta_Method) will be implemented to solve the differential equation.
-- New Shepard Flight Test Results from Blue Origin De-Orbit Descent and Landing Tipping Point for spacecraft (https://doi.org/10.2514/6.2022-1829)
-
 This project demonstrates how undergraduate-level physics and numerical methods can be combined to:
 
 - Construct a time-varying force balance for a multistage rocket,
@@ -115,8 +109,7 @@ with $R_E$ the Earth’s mean radius and $g_0 \approx 9.81\mathrm{m\/s^{-2}}$.
 
 ## 3. Define All Parameters
 
-### Define All Parameters:
-#### 1. State Vector
+### 3.1 State Vector
 
 $$
 \vec{Y}(t) = 
@@ -129,7 +122,7 @@ m
 \end{bmatrix}
 $$
 
-#### 2. 2D Equations of Motion with Drag and Gravity
+### 3.2. Equations of Motion (2-D) with Drag and Gravity
 ##### Velocity in X-Direction:
 $$ 
 \dot{x} = v_x(t) 
@@ -143,7 +136,7 @@ $$
 \dot{m} = -\frac{F(t)}{I_{Isp}g_0} 
 $$ 
 
-#### 3. Split Up the 2nd-Order ODE into two  First Order ODE's
+### 3.3. Split Up the 2nd-Order ODE into two  First Order ODE's
 ##### Acceleration in X-Direction:
 $$ 
 \dot{v_x} = -\frac{1}{2m_{\rm cap}}\\rho(y)C_DAvv_x 
@@ -211,3 +204,11 @@ These values are broadly consistent with public descriptions of New Shepard flig
 - **Acceleration vs Time**
 
 ![Acceleration vs Time](figures/acceleration_vs_time.png)
+
+---
+
+## 7. References:
+- [Blue Origin For the Benefit of Earth](https://www.blueorigin.com/new-shepard)
+- [SciPy](https://scipy.org/) and Matplotlib documentation are used for numerical integration and plotting
+- [Runge-Kutta method](https://math.libretexts.org/Courses/Monroe_Community_College/MTH_225_Differential_Equations/03%3A_Numerical_Methods/3.03%3A_The_Runge-Kutta_Method) will be implemented to solve the differential equation
+- New Shepard Flight Test Results from Blue Origin De-Orbit Descent and Landing Tipping Point for spacecraft (https://doi.org/10.2514/6.2022-1829)

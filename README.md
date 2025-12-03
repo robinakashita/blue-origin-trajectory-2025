@@ -39,7 +39,7 @@ m_{\rm cap}\\frac{d^2 \vec{r}}{dt^2}
 $$
 
 $$
-m_{\text{cap}} \frac{d^2 \vec{r}}{dt^2} = \vec{F}_{\text{thrust}} + G \cdot \frac{m_{\text{cap}}\,m_E}{(R_E + h)^2} - \frac{1}{2} \rho(h) C A v^2 + \vec{F}_{\text{lift}}
+m_{\text{cap}} \frac{d^2 \vec{r}}{dt^2} = \vec{F}_{\text{thrust}} + G \cdot \frac{m_{\text{cap}}m_E}{(R_E + h)^2} - \frac{1}{2} \rho(h) C A v^2 + \vec{F}_{\text{lift}}
 $$
 
 $$ \vec{r}= \sqrt{x^2 + y^2}\ $$

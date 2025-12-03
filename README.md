@@ -1,6 +1,6 @@
-# Blue Origin Suborbital Trajectory Simulation in 2-D (Physics 360 Final Project)
+# Modeling the Ascent and Descent of Blue Origin’s New Shepard Capsule Using Numerical Methods in 2-D (Physics 360 Final Project)
 
-This repository implements a numerical simulation of a Blue Origin–style suborbital ascent, coast, and descent trajectory, calibrated using publicly available parameters from the New Shepard flight on April 14, 2025. The simulation solves the coupled equations of motion for a vertically launched rocket with variable mass, atmospheric drag, and altitude-dependent gravity, and reproduces key characteristics of an ~11-minute suborbital flight to the Karman line.
+This project aims to analyze the trajectory of the Blue Origin's New Shepard capsule's 11-minute journey from the ground to the Kármán Line and back to the ground. This spacecraft will experience a point of maximum stress, main engine cut-off, capsule separating from the booster, capsule passing the Kármán Line, parachutes deploying, and finally, the capsule touching down on the landing pad. This system does not have an analytic solution for all conditions, which makes it a great idea for a computational physics project. I will use numerical integration methods (Runge-Kutta) to solve the equations of motion and (Scipy/scipy.integrate.solve_ivp) to calculate the time step for each step. The model will simulate position, velocity, and acceleration as a function of time, and it will estimate how long the space crew experienced weightlessness after the capsule passed the Kármán Line.
 
 The model is implemented in a single, self-contained Jupyter Notebook:
 
@@ -10,7 +10,13 @@ The model is implemented in a single, self-contained Jupyter Notebook:
 
 ## 1. Scientific Motivation
 
-Suborbital launch vehicles provide an accessible test bed for studying rocket dynamics, aerodynamic drag, and ballistic flight under realistic atmospheric conditions. Although Blue Origin’s exact parameters are proprietary, approximate public values (mass, thrust, burnout altitude, etc.) are sufficient to reproduce a physically reasonable and safe trajectory.
+As space travel becomes more accessible to the general public, it becomes crucial to study the effects of Newton's Second Laws of Motion and enhance the safety of spacecraft trajectories and space missions. By modeling the trajectory of Blue Origin's New Shepard Capsule from the beginning to the end, we are able to visualize where the maximum terminal velocity of the capsule occurs. By splitting up our 2nd-Order ODE into two First-Order ODEs, we are able to numerically calculate the maximum terminal velocity for the Blue Origin capsule and the free-fall time for the space crew. The capsule will travel from $t = 0 s$ to $t = 660s$. At $t = 141s$, the engine of the capsule will cut-off, and the booster will separate from the capsule. The position and velocity will start at $x$, $y$, $v_x$, $v_y$ = $0$, respectively. The mass of the capsule will start at $m = 75,000 kg$.
+
+Sources:
+- [Blue Origin For the Benefit of Earth](https://www.blueorigin.com/new-shepard)
+- [SciPy](https://scipy.org/) and Matplotlib documentation  – I am planning to use Python with these libraries for numerical integration and plotting.
+- [Runge-Kutta method](https://math.libretexts.org/Courses/Monroe_Community_College/MTH_225_Differential_Equations/03%3A_Numerical_Methods/3.03%3A_The_Runge-Kutta_Method) will be implemented to solve the differential equation.
+- [New Shepard Flight Test Results from Blue Origin De-Orbit Descent and Landing Tipping Point](https://video.aiaa.org/title/508b4400-f688-420c-aeba-8eaf00440835) for spacecraft (https://doi.org/10.2514/6.2022-1829)
 
 This project demonstrates how undergraduate-level physics and numerical methods can be combined to:
 
@@ -107,7 +113,51 @@ with $R_E$ the Earth’s mean radius and $g_0 \approx 9.81\mathrm{m\/s^{-2}}$.
 
 ---
 
-## 3. Numerical Methods
+## 3. Define All Parameters
+
+### Define All Parameters:
+#### 1. State Vector
+
+$$
+\vec{Y}(t) = 
+\begin{bmatrix}
+x(t) \\
+y(t) \\
+v_x(t) \\
+v_y(t) \\
+m
+\end{bmatrix}
+$$
+
+#### 2. 2D Equations of Motion with Drag and Gravity
+##### Velocity in X-Direction:
+$$ 
+\dot{x} = v_x(t) 
+$$
+##### Velocity in Y-Direction:
+$$ 
+\dot{y} = v_y(t) 
+$$
+##### Mass Flow Rate
+$$ 
+\dot{m} = -\frac{F(t)}{I_{\!sp}\,g_0} 
+$$ 
+
+#### 3. Split Up the 2nd-Order ODE into two  First Order ODE's
+##### Acceleration in X-Direction:
+$$ 
+\dot{v_x} = -\frac{1}{2\,m_{\rm cap}}\,\rho(y)\,C_D\,A\;v\;v_x 
+$$ 
+##### Acceleration in Y-Direction:
+$$ \dot{v_y} = \frac{F(t)}{m_{\rm cap}}
+   \;-\;g(y)
+   \;-\;\frac{1}{2\,m_{\rm cap}}\,\rho(y)\,C_D\,A\;v\;v_y
+   \;+\;\frac{1}{2\,m_{\rm cap}}\,\rho(y)\,C_L\,A\,v^2 
+$$
+   
+---
+
+## 4. Numerical Methods
 
 The equations of motion are integrated using `scipy.integrate.solve_ivp` over three main phases:
 
@@ -133,7 +183,7 @@ From these, the code derives:
 
 ---
 
-## 4. Key Results
+## 5. Key Results
 
 Using the current parameter set, the simulation yields:
 
@@ -147,7 +197,7 @@ These values are broadly consistent with public descriptions of New Shepard flig
 
 ---
 
-## 5. Figures
+## 6. Figures
 
 - **Position vs Time**
   

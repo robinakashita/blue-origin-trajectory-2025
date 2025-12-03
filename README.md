@@ -1,6 +1,6 @@
 # Modeling the Ascent and Descent of Blue Origin’s New Shepard Capsule Using Numerical Methods in 2-D (Physics 360 Final Project)
 
-This project aims to analyze the trajectory of the Blue Origin's New Shepard capsule's 11-minute journey from the ground to the Kármán Line and back to the ground. This spacecraft will experience a point of maximum stress, main engine cut-off, capsule separating from the booster, capsule passing the Kármán Line, parachutes deploying, and finally, the capsule touching down on the landing pad. This system does not have an analytic solution for all conditions, which makes it a great idea for a computational physics project. I will use numerical integration methods (Runge-Kutta) to solve the equations of motion and (Scipy/scipy.integrate.solve_ivp) to calculate the time step for each step. The model will simulate position, velocity, and acceleration as a function of time, and it will estimate how long the space crew experienced weightlessness after the capsule passed the Kármán Line.
+This project aims to analyze the trajectory of the Blue Origin's New Shepard capsule's 11-minute journey from the ground to the Karman Line and back to the ground. This spacecraft will experience a point of maximum stress, main engine cut-off, capsule separating from the booster, capsule passing the Karman Line, parachutes deploying, and finally, the capsule touching down on the landing pad. This system does not have an analytic solution for all conditions, which makes it a great idea for a computational physics project. I will use numerical integration methods (Runge-Kutta) to solve the equations of motion and (Scipy/scipy.integrate.solve_ivp) to calculate the time step for each step. The model will simulate position, velocity, and acceleration as a function of time, and it will estimate how long the space crew experienced weightlessness after the capsule passed the Karman Line.
 
 The model is implemented in a single, self-contained Jupyter Notebook:
 
@@ -16,7 +16,7 @@ Sources:
 - [Blue Origin For the Benefit of Earth](https://www.blueorigin.com/new-shepard)
 - [SciPy](https://scipy.org/) and Matplotlib documentation  – I am planning to use Python with these libraries for numerical integration and plotting.
 - [Runge-Kutta method](https://math.libretexts.org/Courses/Monroe_Community_College/MTH_225_Differential_Equations/03%3A_Numerical_Methods/3.03%3A_The_Runge-Kutta_Method) will be implemented to solve the differential equation.
-- [New Shepard Flight Test Results from Blue Origin De-Orbit Descent and Landing Tipping Point](https://video.aiaa.org/title/508b4400-f688-420c-aeba-8eaf00440835) for spacecraft (https://doi.org/10.2514/6.2022-1829)
+- New Shepard Flight Test Results from Blue Origin De-Orbit Descent and Landing Tipping Point for spacecraft (https://doi.org/10.2514/6.2022-1829)
 
 This project demonstrates how undergraduate-level physics and numerical methods can be combined to:
 

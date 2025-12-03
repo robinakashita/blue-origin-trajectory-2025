@@ -4,7 +4,7 @@ This repository implements a numerical simulation of a Blue Origin–style subor
 
 The model is implemented in a single, self-contained Jupyter Notebook:
 
-- `Final_Report_Robin_N.ipynb`
+- `Physics360_Final_Report_Robin_N.ipynb`
 
 ---
 
